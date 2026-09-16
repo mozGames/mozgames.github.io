@@ -1448,6 +1448,21 @@ document.addEventListener("DOMContentLoaded", () => {
     <div style="padding:1.5rem 1.5rem 1.75rem" class="policy-page" id="policyBody"></div>
   </div>
 </div>
+<!-- CONTADOR MOZGAMES -->
+<div id="visitas-hoje" style="font-family:Arial; background:#0f172a; color:#22c55e; padding:12px 18px; border-radius:10px; display:inline-block; margin:10px;">
+  👁️ Carregando visitas...
+</div>
 
+<script>
+  let hoje = new Date().toISOString().split('T')[0]; // 2026-09-16
+  let chave = "mozgames.github.io_" + hoje;
+
+  fetch(`https://api.countapi.xyz/hit/${chave}`)
+   .then(r => r.json())
+   .then(d => {
+      document.getElementById("visitas-hoje").innerHTML = `👁️ ${d.value} pessoas visitaram hoje`;
+      console.log("Visitas hoje:", d.value);
+    });
+</script>
 </body>
 </html>
